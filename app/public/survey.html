@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <title>Friend Finder Survey</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Get set up to find your perfect friends!</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="name" class="form-control" id="name" placeholder="Harry Potter">
+            </div>
+            <div class="form-group">
+                <label for="q1">You can find me at the bar every weekend.</label>
+                <select class="form-control" id="q1">
+                    <option selected>Answer</option>
+                    <option value="1">1 Strongly Disagree</option>
+                    <option value="2">2 Disagree</option>
+                    <option value="3">3 No strong feelings</option>
+                    <option value="4">4 Agree</option>
+                    <option value="5">5 Strongly Agree</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="q2">I live for happy hour.</label>
+                <select class="form-control" id="q2">
+                    <option selected>Answer</option>
+                    <option value="1">1 Strongly Disagree</option>
+                    <option value="2">2 Disagree</option>
+                    <option value="3">3 No strong feelings</option>
+                    <option value="4">4 Agree</option>
+                    <option value="5">5 Strongly Agree</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="q3">On weekends, I prefer a run or kayaking to brunch.</label>
+                <select class="form-control" id="q3">
+                    <option selected>Answer</option>
+                    <option value="1">1 Strongly Disagree</option>
+                    <option value="2">2 Disagree</option>
+                    <option value="3">3 No strong feelings</option>
+                    <option value="4">4 Agree</option>
+                    <option value="5">5 Strongly Agree</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="q4">Game day means we're at our bar or we have tickets.</label>
+                <select class="form-control" id="q4">
+                    <option selected>Answer</option>
+                    <option value="1">1 Strongly Disagree</option>
+                    <option value="2">2 Disagree</option>
+                    <option value="3">3 No strong feelings</option>
+                    <option value="4">4 Agree</option>
+                    <option value="5">5 Strongly Agree</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="q5">Animated movies and tv shows are for kids.</label>
+                <select class="form-control" id="q5">
+                    <option selected>Answer</option>
+                    <option value="1">1 Strongly Disagree</option>
+                    <option value="2">2 Disagree</option>
+                    <option value="3">3 No strong feelings</option>
+                    <option value="4">4 Agree</option>
+                    <option value="5">5 Strongly Agree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="q6">I'm looking for someone to hang out with, but I don't want to deal with your problems. Call me to go out,
+                    not to talk about your ex. </label>
+                <select class="form-control" id="q6">
+                    <option selected>Answer</option>
+                    <option value="1">1 Strongly Disagree</option>
+                    <option value="2">2 Disagree</option>
+                    <option value="3">3 No strong feelings</option>
+                    <option value="4">4 Agree</option>
+                    <option value="5">5 Strongly Agree</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="q7">I'm really busy, so we need to make our plans a week in advance.</label>
+                <select class="form-control" id="q7">
+                    <option selected>Answer</option>
+                    <option value="1">1 Strongly Disagree</option>
+                    <option value="2">2 Disagree</option>
+                    <option value="3">3 No strong feelings</option>
+                    <option value="4">4 Agree</option>
+                    <option value="5">5 Strongly Agree</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="q8">I am always on time and I hate when people are late.</label>
+                <select class="form-control" id="q8">
+                    <option selected>Answer</option>
+                    <option value="1">1 Strongly Disagree</option>
+                    <option value="2">2 Disagree</option>
+                    <option value="3">3 No strong feelings</option>
+                    <option value="4">4 Agree</option>
+                    <option value="5">5 Strongly Agree</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="q9">I'd rather lie or change the subject than disagree about something.</label>
+                <select class="form-control" id="q9">
+                    <option selected>Answer</option>
+                    <option value="1">1 Strongly Disagree</option>
+                    <option value="2">2 Disagree</option>
+                    <option value="3">3 No strong feelings</option>
+                    <option value="4">4 Agree</option>
+                    <option value="5">5 Strongly Agree</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="q10">It's a lot easier to be friends with people who make the same amount of money and have the same religious
+                    and political beliefs.</label>
+                <select class="form-control" id="q10">
+                    <option selected>Answer</option>
+                    <option value="1">1 Strongly Disagree</option>
+                    <option value="2">2 Disagree</option>
+                    <option value="3">3 No strong feelings</option>
+                    <option value="4">4 Agree</option>
+                    <option value="5">5 Strongly Agree</option>
+                </select>
+            </div>
+
+        </form>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+</body>
+
+</html>
