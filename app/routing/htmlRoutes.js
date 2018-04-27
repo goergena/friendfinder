@@ -1,12 +1,17 @@
-app.get("/survey.html", function(req, res) {
-    res.sendFile(path.join("/app/public/survey.html"));
+
+var path = require('path');
+var express = require('express');
+
+module.exports = function () {
+  var router = express.Router();
+
+  router.get('/survey', function (req, res) {
+    return res.sendFile(path.join(__dirname, "../public/survey.html"));
   });
 
-  app.get("/", function(req, res) {
-    res.sendFile(path.join("/app/public/home.html"));
+  router.get('*', function (req, res) {
+    return res.sendFile(path.join(__dirname, "../public/home.html"));
   });
-  
-  
-  // Displays all characters
 
-  //what is the catch all. 
+  return router;
+};

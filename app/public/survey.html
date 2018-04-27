@@ -7,12 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <title>Friend Finder Survey</title>
 </head>
 
@@ -84,7 +79,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="q6">I'm looking for someone to hang out with, but I don't want to deal with your problems. I won't talk about mine, either. </label>
+                <label for="q6">I'm looking for someone to hang out with, but I don't want to deal with your problems. I won't talk about
+                    mine, either. </label>
                 <select class="form-control" id="q6">
                     <option selected>Answer</option>
                     <option value="1">1 Strongly Disagree</option>
@@ -143,8 +139,87 @@
             </div>
 
         </form>
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit" id="submit">Submit form</button>
     </div>
+
+
+    <script type="text/javascript">
+        // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
+        // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+        // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
+        // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
+
+        $("#submit").on("click", function (event) {
+
+            var currentURL = window.location.origin;
+
+            // Here we grab the form elements
+            var newFriend = {
+                name: $("#name").val().trim(),
+                scores: [$("#q1").val().trim(),
+                    $("#q2").val().trim(),
+                    $("#q3").val().trim(),
+                    $("#q4").val().trim(),
+                    $("#q5").val().trim(),
+                    $("#q6").val().trim(),
+                    $("#q7").val().trim(),
+                    $("#q8").val().trim(),
+                    $("#q9").val().trim(),
+                    $("#q10").val().trim(),
+                ]
+            };
+
+            console.log(newFriend);
+
+            $.ajax({
+                    url: currentURL + "/api/friends",
+                    method: "GET"
+                })
+                .then(function (friendsData) {
+
+                    // Here we are logging the URL so we have access to it for troubleshooting
+                    console.log("------------------------------------");
+                    console.log("URL: " + currentURL + "/api/friends");
+
+                    var friendDifferences = [];
+                    var winner = 50;
+                    for (var friendIndex = 0; friendIndex < friendsData.length; friendIndex++) {
+                        //counter++;
+
+                        var currentFriendScore = 0;
+
+                        for (var scoreIndex = 0; scoreIndex < friendsData[friendIndex].scores.length; scoreIndex++) {
+                            currentFriendScore += Math.abs(newFriend.scores[scoreIndex] - friendsData[
+                                friendIndex].scores[
+                                scoreIndex]);
+
+                        };
+
+                        friendDifferences[friendIndex] = currentFriendScore;
+
+                        if (friendIndex > 0) {
+                            if (friendDifferences[friendIndex] < winner) {
+                                winner = friendDifferences[friendIndex];
+                            }
+                        }
+
+                    }
+
+                    var newBestie = friendsData[friendDifferences.indexOf(winner)].name;
+                    console.log("New bestie: " + newBestie);
+
+
+                });
+
+
+            $.post("/api/friends", newFriend)
+                .then(function (data) {
+                    console.log("adding to friends: ", data);
+                    
+                });
+
+        });
+    </script>
 </body>
 
 </html>
